@@ -9,7 +9,7 @@ const addAnswer = (req, res) => {
         if (Object.keys(body).length !== 0) {
             questionModel.findOneAndUpdate({ '_id': id }, { 'answer': body.answer }).exec().then((value) => {
                 console.log(value);
-                res.status(400).json({"message": "answer added",
+                res.status(200).json({"message": "answer added",
                 "question": value,
             });
             }).catch((e) => {
