@@ -1,9 +1,9 @@
 const express = require("express");
-const addQuestion = require("../controllers/addQuestion");
+const addQuestion = require("../controllers/addQuestionController");
 const { model } = require("mongoose");
 const getAllQuestions = require("../controllers/getAllQuestionsController");
-const getSpecificQuestion = require("../controllers/getSpecificQuestion");
-const addAnswer = require("../controllers/addAnswer");
+const getSpecificQuestion = require("../controllers/getSpecificQuestionController");
+const addAnswer = require('../controllers/addAnswerController');
 const questionRouter = express.Router();
 
 questionRouter.post('/questions', addQuestion);
