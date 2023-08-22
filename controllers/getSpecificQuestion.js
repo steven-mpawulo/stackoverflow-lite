@@ -8,7 +8,7 @@ const getSpecificQuestion = async (req, res) => {
         await questionModel.findById({_id : id}).exec().then((value) => {
             console.log(value);
             if (value !== null) {
-                res.status(200).json({"message": "question fetched"});
+                res.status(200).json({"message": "question fetched", "question": value});
             }
 
         }).catch((e) => {
