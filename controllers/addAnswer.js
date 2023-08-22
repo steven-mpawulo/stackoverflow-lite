@@ -17,4 +17,4 @@ const addAnswer = (req, res) => {
     }
 }
 
-moduel.exports = addAnswer;
+module.exports = addAnswer;
