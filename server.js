@@ -2,6 +2,7 @@ const express = require("express");
 const questionRouter = require("./routes/questionRoute");
 require('dotenv').config();
 const app = express();
+const mongoose = require('mongoose');
 
 app.use(express.json());
 
@@ -14,7 +15,12 @@ app.get("/", (req, res) => {
 });
 
 app.use('/api/v1', questionRouter);
-app.listen(port, () => {
-    console.log("Server has started");
-})
+
+mongoose.connect(process.env.DB_URL).then(() => {
+    console.log("DB connected");
+    app.listen(port, () => {
+        console.log("Server has started");
+    });
+} );
+
 
