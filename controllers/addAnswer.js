@@ -16,3 +16,5 @@ const addAnswer = (req, res) => {
         res.status(400).json({ "message": "something went wrong" });
     }
 }
+
+moduel.exports = addAnswer;
