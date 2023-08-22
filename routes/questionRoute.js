@@ -11,7 +11,7 @@ questionRouter.post('/questions', addQuestion);
 questionRouter.get('/questions', getAllQuestions);
 questionRouter.get('/questions/:id', getSpecificQuestion);
 questionRouter.get('/questions/:id/answers', addAnswer);
-questionRouter.get('/questions/:id', deleteQuestion);
+questionRouter.delete('/questions/:id', deleteQuestion);
 
 
 module.exports = questionRouter;

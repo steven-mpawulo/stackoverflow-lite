@@ -9,6 +9,8 @@ const getSpecificQuestion = async (req, res) => {
             console.log(value);
             if (value !== null) {
                 res.status(200).json({"message": "question fetched", "question": value});
+            } else {
+                res.status(201).json({"message": "no question found"});
             }
 
         }).catch((e) => {
