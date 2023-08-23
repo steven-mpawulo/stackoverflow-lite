@@ -6,6 +6,7 @@ const getSpecificQuestion = require("../controllers/getSpecificQuestionControlle
 const addAnswer = require('../controllers/addAnswerController');
 const deleteQuestion = require("../controllers/deleteQuestionController");
 const signup = require("../controllers/signupController");
+const login = require("../controllers/loginController");
 const questionRouter = express.Router();
 
 questionRouter.post('/questions', addQuestion);
@@ -14,6 +15,7 @@ questionRouter.get('/questions/:id', getSpecificQuestion);
 questionRouter.get('/questions/:id/answers', addAnswer);
 questionRouter.delete('/questions/:id', deleteQuestion);
 questionRouter.post('/signup', signup);
+questionRouter.post('/login', login);
 
 
 module.exports = questionRouter;
