@@ -5,7 +5,8 @@ const signup = async (req, res) => {
     if (Object.keys(body).length === 0) {
         res.status(400).json({"message": "please provide some data"});
     } else {
-        const hashedPassword = await bcrypt.hash(body.password, 10);
+        if (body.password){
+            const hashedPassword = await bcrypt.hash(body.password, 10);
         const user = userModel({
             username: body.username,
             email: body.email,
@@ -22,6 +23,10 @@ const signup = async (req, res) => {
             console.log(e);
             res.status(400).json({"message": "something went wrong"});
         });
+        } else {
+            res.status(400).json({"message": "something went wrong"});
+        }
+        
         
     }
 
