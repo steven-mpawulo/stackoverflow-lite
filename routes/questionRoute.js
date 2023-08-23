@@ -7,9 +7,10 @@ const addAnswer = require('../controllers/addAnswerController');
 const deleteQuestion = require("../controllers/deleteQuestionController");
 const signup = require("../controllers/signupController");
 const login = require("../controllers/loginController");
+const verifyToken = require("../middleware/verifyToken");
 const questionRouter = express.Router();
 
-questionRouter.post('/questions', addQuestion);
+questionRouter.post('/questions', verifyToken, addQuestion);
 questionRouter.get('/questions', getAllQuestions);
 questionRouter.get('/questions/:id', getSpecificQuestion);
 questionRouter.get('/questions/:id/answers', addAnswer);
