@@ -17,6 +17,8 @@ const login = (req, res) => {
                 console.log(e);
                 res.status(400).json({"message": "something went wrong"});
             });
+        } else {
+            res.status(400).json({"message": "something went wrong"});
         }
 
     } else {
