@@ -2,6 +2,8 @@ const questionModel = require("../models/questionModel");
 
 const addQuestion = (req, res) => {
     const body = req.body;
+    const user = req.user;
+    console.log(user);
     console.log(body);
     if (Object.keys(body).length === 0){
         res.status(400).json({"message": "please provide some data"});
@@ -9,6 +11,7 @@ const addQuestion = (req, res) => {
     } else {
         const question = new questionModel({
             question: body.question,
+            owner: user._id,
         });
 
         question.save().then((value) => {
