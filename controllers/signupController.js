@@ -5,7 +5,7 @@ const signup = async (req, res) => {
     if (Object.keys(body).length === 0) {
         res.status(400).json({"message": "please provide some data"});
     } else {
-        if (body.password){
+        if (body.username && body.password && body.email){
             const hashedPassword = await bcrypt.hash(body.password, 10);
         const user = userModel({
             username: body.username,
