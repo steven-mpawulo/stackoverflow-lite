@@ -6,40 +6,32 @@ const updateAnswer = async (req, res) => {
     const questionId = req.params.id;
     console.log('question id:', questionId);
     const answerId = req.params.id2;
-    console.log('answer id:',answerId);
+    console.log('answer id:', answerId);
     const newAnswerId = new mongoose.Types.ObjectId(answerId);
     const body = req.body;
 
     if (questionId !== null && answerId !== null) {
-        //    await answerModel.updateOne({'_id': answerId}, {
-        //     $set: {
-        //         "answer": body.answer,
-        //     }
-        //    }).then((value) => {
-        //     console.log(value);
-        //     res.status(200).json({"message": "succesfully updated answer"});
-
-        //    }).catch((e) => {
-        //     console.log(e);
-        //     res.status(400).json({"message": "something went wrong"});
-        //    });
-
-        await questionModel.findOne({ "_id": questionId }, { "answers": { $elemMatch: { "_id": newAnswerId} } }).then((value) => {
+        const update = {
+            "preferred": true,
+        };
+        await questionModel.findOneAndUpdate({ "answers._id": newAnswerId }, { '$set': {"answers.$.preferred": true} }).then((value) => {
             console.log(value);
-            res.status(200).json({"message": "answer found", "answer": value});
+            res.status(200).json({ "message": "answer updated", "question": value });
         }).catch((e) => {
             console.log(e);
-            res.status(400).json({"message": "answer not found"});
+            res.status(400).json({ "message": "failed to update answer" });
         });
 
-        // await questionModel.findById({'_id': questionId}).then((value) => {
-        //     // console.log(value);
-        //     // console.log(value.answers);
-        //   const result = value.answers.filter((answer) => {
-        //     return answer._id === answerId;
-        //   });
-        //   console.log(result);
-        // })
+
+        // await questionModel.findOne({ "_id": questionId }, { "answers": { $elemMatch: { "_id": newAnswerId} } }).then((value) => {
+        //     console.log(value);
+        //     res.status(200).json({"message": "answer found", "answer": value});
+        // }).catch((e) => {
+        //     console.log(e);
+        //     res.status(400).json({"message": "answer not found"});
+        // });
+
+
     } else {
         res.status(400).json({ "message": "something went wrong" });
     }
