@@ -10,6 +10,7 @@ const login = require("../controllers/loginController");
 const verifyToken = require("../middleware/verifyToken");
 const updateAnswer = require("../controllers/updateAnswerController");
 const getAnswersFromSpecificUser = require("../controllers/getAnswersFromSpecificUserController");
+const voteForAnswer = require("../controllers/voteForAnswerController");
 const questionRouter = express.Router();
 
 questionRouter.post('/questions', verifyToken, addQuestion);
@@ -20,6 +21,7 @@ questionRouter.delete('/questions/:id', verifyToken, deleteQuestion);
 questionRouter.post('/auth/signup', signup);
 questionRouter.post('/auth/login', login);
 questionRouter.put('/questions/:id/answers/:id2', updateAnswer);
+questionRouter.put('/questions/:id/answers/upvote/:id2', voteForAnswer);
 questionRouter.get('/user/:id/answers', getAnswersFromSpecificUser);
 
 

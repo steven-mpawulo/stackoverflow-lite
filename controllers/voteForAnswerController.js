@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const questionModel = require('../models/questionModel');
 const voteForAnswer = async (req, res) => {
     const questionId = req.params.id;
     const answerId = req.params.id2;
-    const newAnswerId = mongoose.Types.ObjectId(answerId);
+    const newAnswerId = new mongoose.Types.ObjectId(answerId);
 
 
     if (questionId !== null && answerId !== null) {
@@ -15,3 +16,5 @@ const voteForAnswer = async (req, res) => {
         });
     }
 }
+
+module.exports = voteForAnswer;
