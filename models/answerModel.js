@@ -6,6 +6,10 @@ const answerSchema = new mongoose.Schema({
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'stackoverflowUser',
+    },
+    preferred: {
+        type: Boolean,
+        default: false,
     }
 
 });
