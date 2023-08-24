@@ -1,8 +1,9 @@
 const answerModel = require("../models/answerModel");
+const mongoose = require('mongoose');
 
-const getAnswersFromSpecificUserController = async (req, res) => {
+const getAnswersFromSpecificUser = async (req, res) => {
     const userId = req.params.id;
-    await answerModel.find({"_id": userId}).then((value) => {
+    await answerModel.find({"owner": userId}).then((value) => {
         console.log(value);
         res.status(200).json({"message": "answers found", "answers": value});
     }).catch((e) => {
@@ -12,4 +13,4 @@ const getAnswersFromSpecificUserController = async (req, res) => {
 
 }
 
-module.exports = getAnswersFromSpecificUserController;
+module.exports = getAnswersFromSpecificUser;
