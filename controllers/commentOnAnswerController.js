@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const questionModel = require('../models/questionModel');
-const commentOnAnswerController = (req, res) => {
+const commentOnAnswer = (req, res) => {
     const questionId = req.params.id;
     console.log(questionId);
     const answerId = req.params.id2;
@@ -26,4 +26,4 @@ const commentOnAnswerController = (req, res) => {
 
 }
 
-module.exports = commentOnAnswerController;
+module.exports = commentOnAnswer;

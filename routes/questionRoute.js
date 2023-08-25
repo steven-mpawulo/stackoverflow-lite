@@ -11,6 +11,7 @@ const verifyToken = require("../middleware/verifyToken");
 const updateAnswer = require("../controllers/updateAnswerController");
 const getAnswersFromSpecificUser = require("../controllers/getAnswersFromSpecificUserController");
 const voteForAnswer = require("../controllers/voteForAnswerController");
+const commentOnAnswer = require("../controllers/commentOnAnswerController");
 const questionRouter = express.Router();
 
 questionRouter.post('/questions', verifyToken, addQuestion);
@@ -22,6 +23,7 @@ questionRouter.post('/auth/signup', signup);
 questionRouter.post('/auth/login', login);
 questionRouter.put('/questions/:id/answers/:id2', updateAnswer);
 questionRouter.put('/questions/:id/answers/upvote/:id2', voteForAnswer);
+questionRouter.put('/questions/:id/answers/comment/:id2', commentOnAnswer);
 questionRouter.get('/user/:id/answers', getAnswersFromSpecificUser);
 
 
