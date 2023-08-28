@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 
 const getQuestionsForSingleUser = async (req, res) => {
-    const userId = mongoose.Types.ObjectId(req.params.id);
+    const userId = new mongoose.Types.ObjectId(req.params.id);
     if (userId !== null) {
         await questionModel.find({"owner": userId}).then((value) => {
             console.log(value);

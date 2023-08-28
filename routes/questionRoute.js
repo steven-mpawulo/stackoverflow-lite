@@ -28,7 +28,7 @@ questionRouter.put('/questions/:id/answers/upvote/:id2', voteForAnswer);
 questionRouter.put('/questions/:id/answers/comment/:id2', commentOnAnswer);
 questionRouter.get('/user/:id/answers', getAnswersFromSpecificUser);
 questionRouter.get('/questions/answers', questionWithMostAnswers);
-questionRouter.get('/questions/:id', getQuestionsForSingleUser);
+questionRouter.get('/questions/users/:id', getQuestionsForSingleUser);
 
 
 module.exports = questionRouter;
