@@ -8,3 +8,5 @@ const questionWithMostAnswers = async (req, res) => {
     });
 
 }
+
+module.exports = questionWithMostAnswers;

@@ -12,6 +12,7 @@ const updateAnswer = require("../controllers/updateAnswerController");
 const getAnswersFromSpecificUser = require("../controllers/getAnswersFromSpecificUserController");
 const voteForAnswer = require("../controllers/voteForAnswerController");
 const commentOnAnswer = require("../controllers/commentOnAnswerController");
+const questionWithMostAnswers = require("../controllers/questionWithMostAnswersController");
 const questionRouter = express.Router();
 
 questionRouter.post('/questions', verifyToken, addQuestion);
@@ -25,6 +26,7 @@ questionRouter.put('/questions/:id/answers/:id2', updateAnswer);
 questionRouter.put('/questions/:id/answers/upvote/:id2', voteForAnswer);
 questionRouter.put('/questions/:id/answers/comment/:id2', commentOnAnswer);
 questionRouter.get('/user/:id/answers', getAnswersFromSpecificUser);
+questionRouter.get('/questions/answers', questionWithMostAnswers);
 
 
 module.exports = questionRouter;
