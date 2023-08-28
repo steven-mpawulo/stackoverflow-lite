@@ -30,7 +30,7 @@ questionRouter.put('/questions/:id/answers/comment/:id2', commentOnAnswer);
 questionRouter.get('/user/:id/answers', getAnswersFromSpecificUser);
 questionRouter.get('/questions/answers', questionWithMostAnswers);
 questionRouter.get('/questions/users/:id', getQuestionsForSingleUser);
-questionRouter.get('/questions/search', searchQuestion);
+questionRouter.post('/questions/search', searchQuestion);
 
 
 module.exports = questionRouter;

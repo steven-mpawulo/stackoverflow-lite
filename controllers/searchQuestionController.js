@@ -2,9 +2,10 @@ const questionModel = require("../models/questionModel")
 
 const searchQuestion = async (req, res) => {
     const body = req.body;
+    console.log(body.searchQuestion);
     if (Object.keys(body).length !== 0){
         await questionModel.find({$text: {
-            search: body.searchQuestion
+            $search: body.searchQuestion
         }}).then((value) => {
             console.log(value);
             res.status(200).json({"message": "some questions found", "questions": value});
