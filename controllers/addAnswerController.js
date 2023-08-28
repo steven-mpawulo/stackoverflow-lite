@@ -18,7 +18,7 @@ const addAnswer = async (req, res) => {
 
             await answer.save().then(async (value) => {
                 console.log(value);
-                await questionModel.findOneAndUpdate({ '_id': id }, {$inc: { answerCount: 1 } }, {$addToSet: {answers: value} },{new: true}).exec().then((value) => {
+                await questionModel.findOneAndUpdate({ '_id': id }, {$inc: { answerCount: 1 }, $addToSet: {answers: value} },{new: true}).exec().then((value) => {
                     console.log(value);
                     res.status(200).json({"message": "answer added",
                     "question": value,
