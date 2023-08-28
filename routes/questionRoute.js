@@ -14,6 +14,7 @@ const voteForAnswer = require("../controllers/voteForAnswerController");
 const commentOnAnswer = require("../controllers/commentOnAnswerController");
 const questionWithMostAnswers = require("../controllers/questionWithMostAnswersController");
 const getQuestionsForSingleUser = require("../controllers/getQuestionsForSingleUserController");
+const searchQuestion = require("../controllers/searchQuestionController");
 const questionRouter = express.Router();
 
 questionRouter.post('/questions', verifyToken, addQuestion);
@@ -29,6 +30,7 @@ questionRouter.put('/questions/:id/answers/comment/:id2', commentOnAnswer);
 questionRouter.get('/user/:id/answers', getAnswersFromSpecificUser);
 questionRouter.get('/questions/answers', questionWithMostAnswers);
 questionRouter.get('/questions/users/:id', getQuestionsForSingleUser);
+questionRouter.get('/questions/search', searchQuestion);
 
 
 module.exports = questionRouter;
