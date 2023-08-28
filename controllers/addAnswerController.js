@@ -18,7 +18,7 @@ const addAnswer = (req, res) => {
 
             answer.save().then((value) => {
                 console.log(value);
-                questionModel.findOneAndUpdate({ '_id': id }, {$addToSet: {answers: value} }).exec().then((value) => {
+                questionModel.findOneAndUpdate({ '_id': id }, {$addToSet: {answers: value} }, { $inc: { "answerCount.$": 1 } }, {new: true}).exec().then((value) => {
                     console.log(value);
                     res.status(200).json({"message": "answer added",
                     "question": value,
